@@ -1,0 +1,48 @@
+/*
+ * Copyright ©2016. Created by P. Bauer (p.bauer@htl-leonding.ac.at),
+ * Department of Informatics and Media Technique, HTBLA Leonding, 
+ * Limesstr. 12 - 14, 4060 Leonding, AUSTRIA. All Rights Reserved. Permission
+ * to use, copy, modify, and distribute this software and its documentation
+ * for educational, research, and not-for-profit purposes, without fee and
+ * without a signed licensing agreement, is hereby granted, provided that the
+ * above copyright notice, this paragraph and the following two paragraphs
+ * appear in all copies, modifications, and distributions. Contact the Head of
+ * Informatics and Media Technique, HTBLA Leonding, Limesstr. 12 - 14,
+ * 4060 Leonding, Austria, for commercial licensing opportunities.
+ * 
+ * IN NO EVENT SHALL HTBLA LEONDING BE LIABLE TO ANY PARTY FOR DIRECT,
+ * INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST
+ * PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION,
+ * EVEN IF HTBLA LEONDING HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+ * HTBLA LEONDING SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ * PARTICULAR PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY,
+ * PROVIDED HEREUNDER IS PROVIDED "AS IS". HTBLA LEONDING HAS NO OBLIGATION
+ * TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+ */
+package httpurl;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ *
+ * @author P. Bauer (p.bauer@htl-leonding.ac.at)
+ */
+public class HttpUrlChecker {
+
+    static Matcher getMatcher(String httptooshort) {
+        Pattern p = Pattern.compile("^https?://(www.)?(\\w)+(-(\\w)+)?(\\.[a-z]+)+$");
+        //([A-Z]|[a-z]|[0-9]) => \\w oder [A-za-z0-9] => \\w
+        //* => 0 oder mehrmals
+        //+ => 1 oder mehrmals
+        //? => 0 oder 1 mal
+        //^ => Beginn eines Strings
+        //$ => Ende eines Strings
+        //Komplexität der Unittests nimmt von Unittest zu Unittest zu
+        //Email, Passwort, 
+        Matcher m = p.matcher(httptooshort);
+        return m;
+    }
+}
